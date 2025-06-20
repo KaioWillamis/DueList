@@ -1,0 +1,15 @@
+TAREFAS
+
+Front-end:
+- Fazer Lista de Clientes
+- Butão de Pesquisa
+- Botão de Cadastrar Cliente
+- Tela de Cadastrar CLiente
+
+Back end:
+ 
+- Função para Cadastrar Cliente
+- Função para Listar todos Clientes
+- Função para Adicionar valor / descontar
+- Função para editar nome do CLiente
+- Função para excluir Cliente "só pode excluir o cliente se o saldo dele for 0"
