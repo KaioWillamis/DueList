@@ -25,12 +25,27 @@ def cadastrarCliente(nome, saldo):
 
     df = pd.concat([df, pd.DataFrame([novo_cliente])], ignore_index=True)
     df.to_csv(CAMINHO_CSV, index=False)
-
-# Teste
-cadastrarCliente("Manoel", 1000)
-    
     
 
+def excluirCliente(id_cliente):
+    # Carrega os dados
+    df = pd.read_csv(CAMINHO_CSV)
 
+    # Converte IDs para string para garantir comparação correta
+    df["id"] = df["id"].astype(str)
+    id_cliente = str(id_cliente)
 
+    # Verifica o saldo do cliente
+    saldo_cliente = df.loc[df["id"] == id_cliente, "saldo"].values[0]
+    if float(saldo_cliente) != 0:
+        print(f"Cliente com ID {id_cliente} não pode ser excluído: saldo é {saldo_cliente}.")
+        return
 
+    # Exclui o cliente
+    df = df[df["id"] != id_cliente]
+    df.to_csv(CAMINHO_CSV, index=False)
+
+def adicionarValorCliente(id,valor):
+    df = pd.read_csv(CAMINHO_CSV)
+    
+    
