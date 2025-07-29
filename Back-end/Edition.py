@@ -46,6 +46,28 @@ def excluirCliente(id_cliente):
     df.to_csv(CAMINHO_CSV, index=False)
 
 def adicionarValorCliente(id,valor):
+    # Carrega os dados
     df = pd.read_csv(CAMINHO_CSV)
+    
+    # Garante que o ID seja tratado como string
+    df["id"] = df["id"].astype(str)
+    id = str(id)
+    
+    # Adiciona o valor ao saldo do cliente
+    df.loc[df["id"] == id, "saldo"] = df.loc[df["id"] == id, "saldo"].astype(float) + float(valor)
+    df.to_csv(CAMINHO_CSV, index=False)
+    print(f"Valor R${valor} adicionado ao cliente {id}.")
+    
+def descontarValorCliente(id,valor):
+    #Carrega os dados
+    df = pd.read_csv(CAMINHO_CSV)
+    
+    # Garante que o ID seja tratado como string
+    df["id"] = df["id"].astype(str)
+    id = str(id)
+    
+    #Descontar valor no saldo do Cliente
+    
+    
     
     
